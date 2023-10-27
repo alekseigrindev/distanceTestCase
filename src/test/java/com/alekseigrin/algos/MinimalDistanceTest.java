@@ -65,7 +65,7 @@ class MinimalDistanceTest {
     }
 
     @Test
-    void minimalDistance_ifStringLengthZero_shouldThrowStringIndexOutOfBoundsException() {
+    void minimalDistance_ifBothOrOneOfStringsLengthZero_shouldPass() {
         assertDoesNotThrow(() -> {main(new String[] {"", ""});});
         assertDoesNotThrow(() -> {main(new String[] {"word1", ""});});
         assertDoesNotThrow(() -> {main(new String[] {"", "word2"});});

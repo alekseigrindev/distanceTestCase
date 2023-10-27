@@ -1,8 +1,6 @@
 package com.alekseigrin.algos;
 
 public class MinimalDistance {
-    public MinimalDistance() {
-    }
 
     public static void main(String[] args) {
         minimalDistance(args[0], args[1]);
@@ -21,8 +19,8 @@ public class MinimalDistance {
             cost[0][i] = i;
         }
 
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 char c1 = word1.charAt(i), c2 = word2.charAt(j);
                 if (c1 == c2) {
                     cost[i + 1][j + 1] = cost[i][j];

@@ -1,16 +1,77 @@
 package com.alekseigrin.algos;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static com.alekseigrin.algos.MinimalDistance.*;
 
 class MinimalDistanceTest {
 
-    @Test
-    void minimalDistance_paramsNotNull() {
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
+    @BeforeEach
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
+//    MinimalDistance  = new MinimalDistance();
+
+    @Order(1)
+    @Test
+    void minimalDistance_ifMoreThemTwoValidParams_shouldBeCorrectExecutedWithoutExceptions() {
+        main(new String[] {"word1", "word2", "word3", "word4"});
+        assertEquals("1\n",outContent.toString());
+
+        main(new String[] {"word12", "word21"});
+        assertEquals("1\n2\n",outContent.toString());
+
+        main(new String[] {"word12", ""});
+        assertEquals("1\n2\n6\n",outContent.toString());
+
+        main(new String[] {"", "word2"});
+        assertEquals("1\n2\n6\n5\n",outContent.toString());
+
+        main(new String[] {"", "2"});
+        assertEquals("1\n2\n6\n5\n1\n",outContent.toString());
+
+        main(new String[] {"1", ""});
+        assertEquals("1\n2\n6\n5\n1\n1\n",outContent.toString());
+
+        main(new String[] {"12345", "67890"});
+        assertEquals("1\n2\n6\n5\n1\n1\n5\n",outContent.toString());
+
+        assertDoesNotThrow(() -> {
+            main(new String[] {"word1", "word2", "word3", "word4"});
+        });
     }
 
     @Test
-    void minimalDistance
+    void minimalDistance_paramsNotValid_shouldThrowException() {
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {"word1"});});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {""});});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[0]);});
+    }
+
+    @Test
+    void minimalDistance_ifStringLengthZero_shouldThrowStringIndexOutOfBoundsException() {
+        assertDoesNotThrow(() -> {main(new String[] {"", ""});});
+        assertDoesNotThrow(() -> {main(new String[] {"word1", ""});});
+        assertDoesNotThrow(() -> {main(new String[] {"", "word2"});});
+        assertDoesNotThrow(() -> {minimalDistance("", "");});
+        assertDoesNotThrow(() -> {minimalDistance("word1", "");});
+        assertDoesNotThrow(() -> {minimalDistance("", "word2");});
+    }
+
 }

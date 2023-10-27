@@ -17,4 +17,4 @@ Your task is to spot any mistakes in the code, improve its readability and highl
 Here is a list of points:
 - Look at the current algorithm implementation and propose a way(s) to improve it (no coding needed here)
 - Refactor code (feel free to change anything)
-- Add tests. For testing purposes you can add any testing library you want.
+- Add tests. For testing purposes you can add any testing library you want.# distanceTestCase

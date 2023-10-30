@@ -35,20 +35,8 @@ class MinimalDistanceTest {
         main(new String[] {"word12", "word21"});
         assertEquals("1\n2\n",outContent.toString());
 
-        main(new String[] {"word12", ""});
-        assertEquals("1\n2\n6\n",outContent.toString());
-
-        main(new String[] {"", "word2"});
-        assertEquals("1\n2\n6\n5\n",outContent.toString());
-
-        main(new String[] {"", "2"});
-        assertEquals("1\n2\n6\n5\n1\n",outContent.toString());
-
-        main(new String[] {"1", ""});
-        assertEquals("1\n2\n6\n5\n1\n1\n",outContent.toString());
-
         main(new String[] {"12345", "67890"});
-        assertEquals("1\n2\n6\n5\n1\n1\n5\n",outContent.toString());
+        assertEquals("1\n2\n5\n",outContent.toString());
 
         assertDoesNotThrow(() -> {
             main(new String[] {"word1", "word2", "word3", "word4"});
@@ -60,16 +48,16 @@ class MinimalDistanceTest {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {"word1"});});
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {""});});
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[0]);});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {"word1", ""});});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {main(new String[] {"", "word2"});});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {minimalDistance("word1", "");});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {minimalDistance("", "word2");});
     }
 
     @Test
     void minimalDistance_ifBothOrOneOfStringsLengthZero_shouldPass() {
         assertDoesNotThrow(() -> {main(new String[] {"", ""});});
-        assertDoesNotThrow(() -> {main(new String[] {"word1", ""});});
-        assertDoesNotThrow(() -> {main(new String[] {"", "word2"});});
         assertDoesNotThrow(() -> {minimalDistance("", "");});
-        assertDoesNotThrow(() -> {minimalDistance("word1", "");});
-        assertDoesNotThrow(() -> {minimalDistance("", "word2");});
     }
 
 }

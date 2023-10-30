@@ -33,51 +33,50 @@ public class MinimalDistance {
                 }
             }
         }
-        
-        
+
         int distance = cost[n][m];
         System.out.println(distance);
-        int curI = n;
-        int curJ = m;
-        String[] curWord = word2.split("");
+//        int curI = n;
+//        int curJ = m;
+//        String[] curWord = word2.split("");
+//
+//        System.out.println(String.join("", curWord));
+//        while (distance > 0) {
+//            int deletion = cost[curI][curJ - 1];
+//            int insertion = cost[curI - 1][curJ];
+//            int substitution = cost[curI - 1][curJ - 1];
+//            if (substitution < distance) {
+//                curWord[curJ - 1] = Character.toString(word1.charAt(curI - 1));
+//                curI--;
+//                curJ--;
+//                distance = substitution;
+//                System.out.println(String.join("", curWord));
+//            } else if (deletion < distance) {
+//                curWord[curJ - 1] = "";
+//                curJ--;
+//                distance = deletion;
+//                System.out.println(String.join("", curWord));
+//            } else if (insertion < distance) {
+//                curWord = insertIntoArray(curWord, curJ, Character.toString(word1.charAt(curI - 1)));
+//                curI--;
+//                distance = insertion;
+//                System.out.println(String.join("", curWord));
+//            } else {
+//                curI--;
+//                curJ--;
+//            }
+//        }
+//    }
 
-        System.out.println(String.join("", curWord));
-        while (distance > 0) {
-            int deletion = cost[curI][curJ - 1];
-            int insertion = cost[curI - 1][curJ];
-            int substitution = cost[curI - 1][curJ - 1];
-            if (substitution < distance) {
-                curWord[curJ - 1] = Character.toString(word1.charAt(curI - 1));
-                curI--;
-                curJ--;
-                distance = substitution;
-                System.out.println(String.join("", curWord));
-            } else if (deletion < distance) {
-                curWord[curJ - 1] = "";
-                curJ--;
-                distance = deletion;
-                System.out.println(String.join("", curWord));
-            } else if (insertion < distance) {
-                curWord = insertIntoArray(curWord, curJ, Character.toString(word1.charAt(curI - 1)));
-                curI--;
-                distance = insertion;
-                System.out.println(String.join("", curWord));
-            } else {
-                curI--;
-                curJ--;
-            }
-        }
-    }
-
-    public static String[] insertIntoArray(String[] arr, int index, String newItem) {
-        String[] result = new String[arr.length + 1];
-        for (int i = 0; i < index; i++) {
-            result[i] = arr[i];
-        }
-        result[index] = newItem;
-        for (int i = index + 1; i < result.length; i++) {
-            result[i] = arr[i - 1];
-        }
-        return result;
+//    public static String[] insertIntoArray(String[] arr, int index, String newItem) {
+//        String[] result = new String[arr.length + 1];
+//        for (int i = 0; i < index; i++) {
+//            result[i] = arr[i];
+//        }
+//        result[index] = newItem;
+//        for (int i = index + 1; i < result.length; i++) {
+//            result[i] = arr[i - 1];
+//        }
+//        return result;
     }
 }

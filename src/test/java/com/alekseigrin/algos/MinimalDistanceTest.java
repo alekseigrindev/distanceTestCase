@@ -26,9 +26,7 @@ class MinimalDistanceTest {
         System.setOut(originalOut);
     }
 
-//    MinimalDistance  = new MinimalDistance();
 
-    @Order(1)
     @Test
     void minimalDistance_ifMoreThemTwoValidParams_shouldBeCorrectExecutedWithoutExceptions() {
         main(new String[] {"word1", "word2", "word3", "word4"});
